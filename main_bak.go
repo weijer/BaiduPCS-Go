@@ -1,4 +1,4 @@
-package main
+package main_bak
 
 import (
 	"encoding/hex"
@@ -13,6 +13,8 @@ import (
 	"strings"
 	"unicode"
 
+	"github.com/olekukonko/tablewriter"
+	"github.com/peterh/liner"
 	"github.com/qjfoidnh/BaiduPCS-Go/baidupcs"
 	"github.com/qjfoidnh/BaiduPCS-Go/internal/pcscommand"
 	"github.com/qjfoidnh/BaiduPCS-Go/internal/pcsconfig"
@@ -29,8 +31,6 @@ import (
 	"github.com/qjfoidnh/BaiduPCS-Go/pcsutil/getip"
 	"github.com/qjfoidnh/BaiduPCS-Go/pcsutil/pcstime"
 	"github.com/qjfoidnh/BaiduPCS-Go/pcsverbose"
-	"github.com/olekukonko/tablewriter"
-	"github.com/peterh/liner"
 	"github.com/urfave/cli"
 )
 
@@ -90,7 +90,7 @@ func init() {
 	}
 }
 
-func main() {
+func main_bak() {
 	defer pcsconfig.Config.Close()
 
 	app := cli.NewApp()
@@ -1341,7 +1341,7 @@ func main() {
 
 					strLength, strMd5, strSliceMd5, strCrc32 := strconv.FormatInt(lp.Length, 10), hex.EncodeToString(lp.MD5), hex.EncodeToString(lp.SliceMD5), strconv.FormatUint(uint64(lp.CRC32), 10)
 					fileName := filepath.Base(filePath)
-					regFileName := strings.Replace(fileName, " ", "_", -1 )
+					regFileName := strings.Replace(fileName, " ", "_", -1)
 					regFileName = strings.Replace(regFileName, "#", "_", -1)
 					tb := pcstable.NewTable(os.Stdout)
 					tb.SetColumnAlignment([]int{tablewriter.ALIGN_LEFT, tablewriter.ALIGN_LEFT})
