@@ -1,4 +1,4 @@
-module github.com/qjfoidnh/BaiduPCS-Go
+module github.com/weijer/BaiduPCS-Go
 
 go 1.13
 
